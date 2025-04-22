@@ -80,17 +80,21 @@ export default async function Home({ searchParams}) {
 
   return (
     
-    <main className="flex max-h-screen flex-col items-center justify-center mx-auto">
-      <PdfTextExtractor pdfUrl={pdf} />
-    {/* <h1 className="text-2xl font-bold mb-4">My PDF Reader</h1> */}
-    {/* <PdfViewer file="/book.pdf" /> */}
-    <object className="pdf mt-5 rounded-lg h-[93vh] mb-10" 
-            data={pdf}
-            width="1000"
-            height="700">
-      <p>PDF cannot be displayed. Please download it <a href={pdf} download>here</a>.</p>
+    <main className="flex max-h-screen flex-col items-center justify-start">
+  <PdfTextExtractor pdfUrl={pdf} />
+
+  {/* PDF preview */}
+  <div className="w-full max-w-5xl mt-6 mb-10 px-5">
+    <object
+      className="w-full rounded-lg aspect-video pb-5 sm-pb-0 h-[400px] sm:h-screen"
+      data={pdf}
+      type="application/pdf"
+    >
+      <p className="text-white text-center mt-4">
+        PDF cannot be displayed. Please download it <a href={pdf} download className="underline text-blue-300">here</a>.
+      </p>
     </object>
-    {/* <Speak /> */}
-  </main>
+  </div>
+</main>
   );
 }
