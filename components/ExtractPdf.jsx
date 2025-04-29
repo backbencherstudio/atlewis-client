@@ -500,7 +500,7 @@ export default function PdfTextExtractor({ pdfUrl, onReady }) {
     try {
       setIsLoading(true);
       setIsReady(false);
-      const loadingTask = pdfjsLib.getDocument(pdfUrl);
+      const loadingTask = pdfjsLib.getDocument('https://storage.googleapis.com/wadshs/WAM232_1.pdf');
       const pdf = await loadingTask.promise;
       let fullText = '';
 
@@ -694,6 +694,7 @@ export default function PdfTextExtractor({ pdfUrl, onReady }) {
   if (!isReady) return null;
 
   return (
+    <>
     <div className="p-6 bg-[#004AAD] text-white w-full text-center">
       <div className="max-w-5xl mx-auto">
         <h1 className="font-bold text-white text-2xl sm:text-3xl md:text-4xl leading-snug">
@@ -736,5 +737,9 @@ export default function PdfTextExtractor({ pdfUrl, onReady }) {
         </div>
       </div>
     </div>
+    <div dangerouslySetInnerHTML={{
+      __html: text
+    }} />
+    </>
   );
 }

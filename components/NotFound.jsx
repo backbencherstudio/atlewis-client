@@ -1,5 +1,6 @@
+import React from 'react'
 
-export default function Home() {
+function NotFound() {
   return (
     <div className="flex items-center justify-center h-screen bg-gray-50">
       <div className="flex flex-col items-center gap-4 bg-white border-2 border-gray-300 rounded-xl shadow-lg p-10">
@@ -12,5 +13,7 @@ export default function Home() {
         </p>
       </div>
     </div>
-  );
+  )
 }
+
+export default NotFound
