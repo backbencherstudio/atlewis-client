@@ -75,14 +75,14 @@ export default function StreamPdfButton({ fileName }) {
       <p>Loading PDF...</p>
     </div>}
       {pdfUrl && (
-        <iframe
+        <embed type="application/pdf"
            className="w-full rounded-lg overflow-hidden aspect-video pb-5 sm-pb-0 h-[400px] sm:h-screen"
           src={pdfUrl}
           width="100%"
           height="600px"
           title="PDF Viewer"
           frameBorder="0"
-        ></iframe>
+        />
       )}
     </div>
    </div>
