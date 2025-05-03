@@ -50,7 +50,6 @@ export default function PostPdfComponent({fileName}) {
   }
   return (
     <div className="mx-auto">
-      
       {
         response && <PdfReader text={response?.content} onReady={() => console.log('it is working')}  />
       }
