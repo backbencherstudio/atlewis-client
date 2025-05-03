@@ -5,7 +5,7 @@ const storage = new Storage({
     keyFilename: process.env.GCP_KEY_FILE_PATH,
   })
   
-const BUCKET_NAME = 'wadshs'
+const BUCKET_NAME = process.env.GCP_BUCKET_NAME
 
 export async function GET(req) {
   try {

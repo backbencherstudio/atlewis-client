@@ -21,7 +21,7 @@ export default function PostPdfComponent({fileName}) {
         headers: {
           'Content-Type': 'application/json', // Send JSON
         },
-        body: JSON.stringify({ url: `https://storage.googleapis.com/wadshs/${fileName}` }), // Send the URL as JSON body
+        body: JSON.stringify({ url: `https://storage.googleapis.com/${process.env.NEXT_PUBLIC_GCP_BUCKET_NAME}/${fileName}` }), // Send the URL as JSON body
       });
 
       if (res.ok) {
