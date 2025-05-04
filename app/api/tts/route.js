@@ -9,6 +9,9 @@ const client = new textToSpeech.TextToSpeechClient({
 export async function POST(req) {
   const { text } = await req.json();
 
+  // replace all the . from text with a ''
+  text.replaceAll(/\./g, '');
+
   const request = {
     input: { text },
     voice: {
@@ -16,7 +19,7 @@ export async function POST(req) {
       name: 'en-US-Chirp3-HD-Algenib',
     },
     audioConfig: { audioEncoding: 'MP3' },
-  };
+  };  
 
   try {
     const [response] = await client.synthesizeSpeech(request);

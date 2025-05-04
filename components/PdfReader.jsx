@@ -234,6 +234,7 @@
 //     </>
 //   );
 // }
+
 'use client';
 import { useEffect, useRef, useState } from 'react';
 
@@ -271,7 +272,10 @@ export default function PdfReader({ text, onReady }) {
   }, [text, onReady]);
 
   const preloadAudio = async (line, index) => {
-    const trimmed = line?.trim();
+    let trimmed = line?.trim();
+    // Remove all dots from the text before sending to TTS
+    trimmed = trimmed?.replace(/\./g, ' ').replace(/\s+/g, ' ').trim();
+    
     if (!trimmed) return;
 
     const API_URL = '/api/tts';
@@ -297,7 +301,7 @@ export default function PdfReader({ text, onReady }) {
 
   const handleSpeakLineByLine = async () => {
     if (!text.trim()) return;
-
+    
     handleStop();
     const splitLines = text
       .split(/[.?!]\s+/)
@@ -314,7 +318,10 @@ export default function PdfReader({ text, onReady }) {
   };
 
   const playCurrentLine = async (line, index) => {
-    const trimmed = line.trim();
+    let trimmed = line.trim();
+    // Remove all dots from the text before sending to TTS
+    trimmed = trimmed.replace(/\./g, ' ').replace(/\s+/g, ' ').trim();
+
     if (!trimmed) {
       setCurrentIndex((prev) => prev + 1);
       setShouldPlayNext(true);
@@ -342,7 +349,6 @@ export default function PdfReader({ text, onReady }) {
     const audio = new Audio(URL.createObjectURL(blob));
     audioRef.current = audio;
     
-    // Set up event listeners before playing
     audio.addEventListener('play', () => setIsPlaying(true));
     audio.addEventListener('pause', () => setIsPlaying(false));
     audio.addEventListener('ended', () => {
