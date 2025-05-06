@@ -16,7 +16,7 @@ export async function POST(req) {
     input: { text },
     voice: {
       languageCode: 'en-US',
-      name: 'en-US-Chirp3-HD-Algenib',
+      name: 'en-US-Chrip3-HD-Autonoe',
     },
     audioConfig: { audioEncoding: 'MP3' },
   };  
