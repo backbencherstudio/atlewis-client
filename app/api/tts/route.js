@@ -16,9 +16,13 @@ export async function POST(req) {
     input: { text },
     voice: {
       languageCode: 'en-US',
-      name: 'en-US-Chirp3-HD-Autonoe',
+      name: process.env.GOOGLE_TTS_VOICE || 'en-US-Chirp3-HD-Autonoe',
     },
-    audioConfig: { audioEncoding: 'MP3' },
+    audioConfig: { 
+      audioEncoding: 'MP3',
+      speakingRate: process.env.GOOGLE_TTS_SPEED || 1.0,
+      pitch: process.env.GOOGLE_TTS_PITCH || 0.0,
+    },
   };  
 
   try {
