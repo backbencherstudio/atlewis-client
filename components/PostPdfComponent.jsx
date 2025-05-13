@@ -1,6 +1,6 @@
 'use client';
 
-import { use, useEffect, useState } from 'react';
+import { useEffect, useState } from 'react';
 import PdfReader from './PdfReader';
 
 export default function PostPdfComponent({fileName}) {
@@ -53,6 +53,8 @@ export default function PostPdfComponent({fileName}) {
       {
         response && <PdfReader text={response?.content} onReady={() => console.log('it is working')}  />
       }
+      {/* <div dangerouslySetInnerHTML={{ __html: response?.content }} className="max-w-7xl mx-auto px-4 py-10">
+      </div> */}
     </div>
   );
 }
